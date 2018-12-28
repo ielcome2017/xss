@@ -1,6 +1,6 @@
 #XSS注入检测
 ## 1. 项目结构
-data 存放所有的数据  
+data 存放所有的数据  只需要放xssed.csv, normal_example.csv就可以了
 model  
 | 存放训练后的模型  
 |——preprocessing 存放预处理模块的结构  
