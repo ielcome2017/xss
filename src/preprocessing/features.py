@@ -1,5 +1,5 @@
 import pandas as pd
-from src.preprocessing.geneseg import GeneSeg
+from geneseg import GeneSeg
 import numpy as np
 import pickle
 from gensim.models.word2vec import Word2Vec
@@ -28,7 +28,7 @@ class Feature(object):
 
         return data, label
 
-    def word2vec(self, evil, n_samples, model_path='../../model/preprocessing/model_word2Vec_auto'):
+    def word2vec(self, evil, n_samples, model_path='model/preprocessing/model_word2Vec_auto'):
         embedding_size = 128
         skip_windows = 5
         num_sampled = 64
@@ -82,7 +82,7 @@ class Feature(object):
         normal_data = normal_parsed.apply(lambda x: [i if i in evil_word else 'WORD' for i in x])
         return evil_data, normal_data
 
-    def get_evil_word(self, evil_parsed, model_path="../../model/preprocessing/evil_word"):
+    def get_evil_word(self, evil_parsed, model_path="model/preprocessing/evil_word"):
         # 提取evil['parsed']中的词集，存到evil_word.csv文件中
         if os.path.exists(model_path):
             features = pickle.load(open(model_path, "rb"))
@@ -100,8 +100,8 @@ class Feature(object):
 
 if __name__ == "__main__":
     fea = Feature()
-    evil = pd.read_csv("../../data/xssed.csv")
-    normal = pd.read_csv("../../data/normal_examples.csv")
+    evil = pd.read_csv("data/xssed.csv")
+    normal = pd.read_csv("data/normal_examples.csv")
     data, label = fea.transform(evil, normal)
 
     print(data.iloc[0])

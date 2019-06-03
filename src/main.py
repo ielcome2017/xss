@@ -23,7 +23,8 @@ if __name__ == "__main__":
     data, label = load_data()
 
     train_x, test_x, train_y, test_y = train_test_split(data, label, test_size=0.2)
+    print()
 
-    kerels = ['rbf', 'linear']
+    #kerels = ['rbf', 'linear']
 
-    test(kerels, test_x, test_y)
+    #test(kerels, test_x, test_y)
