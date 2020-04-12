@@ -112,3 +112,7 @@ venv.bak/
 将删除 .idea/workspace.xml
 将删除 __pycache__/
 将删除 src/preprocessing/__pycache__/
+/cache/train
+/cache/xss.feature
+/cache/xss.word2vec
+/cache/test
