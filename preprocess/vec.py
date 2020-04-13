@@ -1,6 +1,5 @@
 import os
 from gensim.models.word2vec import Word2Vec
-import joblib
 import sys
 import numpy as np
 
