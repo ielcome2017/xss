@@ -5,39 +5,48 @@ import os
 from sklearn.metrics import classification_report
 
 from preprocess.vec import Vec
-from preprocess.load_data import XssData, parse_data
+from preprocess.load_data import XssData, ParseData
 
 
-def get_data(data, word2vec):
-    """
-    传入解析后的数据，每一行记录为[str, ...]，需要转化为向量[[0.1, 0.2...]...]
-    :param data: _Parse 解析后的数据，训练测试集数据
-    :param word2vec: Vec word2vec转化工具，Vec.predict将被用于转化
-    :return: 数值型数据
-    """
-    embedding_size = word2vec.embedding_size
-    xs = np.zeros([len(data), embedding_size])
-
-    data = parse_data(data)
-    for num, x in enumerate(data):
-        xx = []
-        for word in x:
-            xx.append(word2vec.predict(word))
-        xs[num] += np.array(xx).sum(axis=0)
-    return xs
-
-
-class Detect:
+class Record:
     def __init__(self):
+        self.word2vec = Vec()
+        self.state = False
+
+    def load_model(self):
+        if not self.state:
+            self.state = self.word2vec.load()
+        return self.state
+
+    def get_data(self, data):
+        """
+        传入解析后的数据，每一行记录为[str, ...]，需要转化为向量[[0.1, 0.2...]...]
+        :param data: _Parse 解析后的数据，训练测试集数据
+        :return: 数值型数据
+        """
+        embedding_size = self.word2vec.embedding_size
+        xs = np.zeros([len(data), embedding_size])
+        data = ParseData(data)
+
+        if not self.load_model():
+            self.word2vec.fit(data)
+        for num, x in enumerate(data):
+            xx = []
+            for word in x:
+                xx.append(self.word2vec.predict(word))
+            xs[num] += np.array(xx).sum(axis=0)
+        return xs
+
+
+class Detect(Record):
+    def __init__(self):
+        super(Detect, self).__init__()
         self.svc = SVC() if not os.path.exists("model/svc-rbf.m") else joblib.load("model/svc-rbf.m")
         self.feature = joblib.load("cache/xss.feature")
-        self.word2vec = Vec()
-        if not self.word2vec.load():
-            self.word2vec.fit()
 
     def fit(self, train):
         train_x, train_y = train[:, 0], train[:, -1]
-        train_x = get_data(train_x, self.word2vec)
+        train_x = self.get_data(train_x)
         train_y = train_y.astype("float")
         self.svc.fit(train_x, train_y)
         joblib.dump(self.svc, "model/svc-rbf.m")
@@ -46,7 +55,7 @@ class Detect:
         if isinstance(param, str):
             param = np.array([param])
         param = param.ravel()
-        x = get_data(param, self.word2vec)
+        x = self.get_data(param)
         y = self.svc.predict(x)
         return y
 
@@ -74,5 +83,5 @@ def test(detect):
 
 if __name__ == '__main__':
     detect = Detect()
-    # train_predict(detect)
-    test(detect)
+    train_predict(detect)
+    # test(detect)

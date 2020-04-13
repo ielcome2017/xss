@@ -17,11 +17,9 @@ class Word:
         self.epoch = 0
 
     def __iter__(self):
-        count = 0
-        for x, y in self.data:
+        for count, x in enumerate(self.data):
             sys.stdout.write("\rEpoch: {}, STEP: {}/{}".format(self.epoch, count, len(self.data)))
             sys.stdout.flush()
-            count += 1
             yield x
         self.epoch += 1
 

@@ -12,10 +12,15 @@ def split(data):
     return data[train], data[val]
 
 
-def parse_data(data, feature=get_feature()):
-    for x in data:
-        x = [elem if elem in feature.keys() else "WORD" for elem in GeneSeg(x)]
-        yield x
+class ParseData:
+    def __init__(self, data, feature=get_feature()):
+        self.data = data
+        self.feature = feature
+
+    def __iter__(self):
+        for x in self.data:
+            x = [elem if elem in self.feature.keys() else "WORD" for elem in GeneSeg(x)]
+            yield x
 
 
 class XssData:

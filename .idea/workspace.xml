@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="77b795ae-19bf-4950-8b0a-91eac940b247" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/preprocess/load_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocess/load_data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/preprocess/vec.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocess/vec.py" afterDir="false" />
@@ -55,6 +55,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Project\xss\cache" />
+      <recent name="D:\Project\xss\data" />
       <recent name="D:\Project\xss\preprocess" />
     </key>
   </component>
@@ -181,7 +183,7 @@
       <workItem from="1586596684897" duration="18669000" />
       <workItem from="1586651183501" duration="13335000" />
       <workItem from="1586695944786" duration="7748000" />
-      <workItem from="1586739033668" duration="4441000" />
+      <workItem from="1586739033668" duration="8601000" />
     </task>
     <task id="LOCAL-00001" summary="modify preprocess, adjust main">
       <created>1586702558331</created>
@@ -190,7 +192,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586702558332</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="modify preprocess, adjust main">
+      <created>1586750152261</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1586750152261</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,30 +227,30 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586604730844" />
-    <state x="560" y="113" key="CommitChangelistDialog2" timestamp="1586702557611">
+    <state x="560" y="113" key="CommitChangelistDialog2" timestamp="1586750151614">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="560" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586702557611" />
+    <state x="560" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586750151614" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1586596765594">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1586596765594" />
-    <state width="1877" height="232" key="GridCell.Tab.0.bottom" timestamp="1586746111328">
+    <state width="1877" height="314" key="GridCell.Tab.0.bottom" timestamp="1586763198796">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="232" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586746111328" />
-    <state width="1877" height="232" key="GridCell.Tab.0.center" timestamp="1586746111328">
+    <state width="1877" height="314" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586763198796" />
+    <state width="1877" height="314" key="GridCell.Tab.0.center" timestamp="1586763198796">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="232" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586746111328" />
-    <state width="1877" height="232" key="GridCell.Tab.0.left" timestamp="1586746111328">
+    <state width="1877" height="314" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586763198796" />
+    <state width="1877" height="314" key="GridCell.Tab.0.left" timestamp="1586763198796">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="232" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586746111328" />
-    <state width="1877" height="232" key="GridCell.Tab.0.right" timestamp="1586746111328">
+    <state width="1877" height="314" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586763198796" />
+    <state width="1877" height="314" key="GridCell.Tab.0.right" timestamp="1586763198796">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="232" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586746111328" />
+    <state width="1877" height="314" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586763198796" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1586703698528">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -266,10 +275,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1586596767859" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1586702573330">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1586750297701">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586702573330" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586750297701" />
     <state x="640" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1586739036163">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -281,10 +290,10 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/xss$Unittests_in_test_unit_py.coverage" NAME="Unittests in test_unit.py Coverage Results" MODIFIED="1586618015662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/xss$main.coverage" NAME="main Coverage Results" MODIFIED="1586746111321" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/xss$main.coverage" NAME="main Coverage Results" MODIFIED="1586763198788" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/xss$dataset.coverage" NAME="dataset Coverage Results" MODIFIED="1586606740084" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/preprocess" />
     <SUITE FILE_PATH="coverage/xss$vec.coverage" NAME="vec Coverage Results" MODIFIED="1586613298986" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/xss$a.coverage" NAME="a Coverage Results" MODIFIED="1586698057189" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/xss$a.coverage" NAME="a Coverage Results" MODIFIED="1586752699885" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/xss$Unittests_for_test_unit_MyTestCase_test_reader.coverage" NAME="Unittests for test_unit.MyTestCase.test_reader Coverage Results" MODIFIED="1586617308600" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

@@ -116,3 +116,4 @@ venv.bak/
 /cache/xss.feature
 /cache/xss.word2vec
 /cache/test
+/cache/xss.word2vec
