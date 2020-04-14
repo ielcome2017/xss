@@ -25,3 +25,6 @@ def GeneSeg(payload):
         |[\w\.]+
     '''
     return nltk.regexp_tokenize(payload, r)
+
+
+

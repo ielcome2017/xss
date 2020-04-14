@@ -1,87 +1,82 @@
-import numpy as np
-from sklearn.svm import SVC
-import joblib
-import os
-from sklearn.metrics import classification_report
-
-from preprocess.vec import Vec
-from preprocess.load_data import XssData, ParseData
+from PyQt5.QtWidgets import QApplication, QWidget
+from PyQt5 import QtWidgets, QtCore, QtGui
 
 
-class Record:
+def get_font(num):
+    font = QtGui.QFont()
+    font.setFamily("宋体")
+    font.setPointSize(num)
+    return font
+
+
+class Printable:
+    def __init__(self, func):
+        self.write = func
+
+
+class FormUI(QWidget):
     def __init__(self):
-        self.word2vec = Vec()
-        self.state = False
+        super(FormUI, self).__init__()
+        self.setWindowTitle("SVM识别XSS注入")
+        self.setObjectName("Form")
+        self.resize(400, 200)
+        self.btn_check = QtWidgets.QPushButton()
+        self.btn_check.setObjectName("btn_check")
+        self.txt_input = QtWidgets.QLineEdit()
+        self.txt_input.setObjectName("txt_input")
 
-    def load_model(self):
-        if not self.state:
-            self.state = self.word2vec.load()
-        return self.state
+        self.tbr_show = QtWidgets.QTextBrowser()
+        self.tbr_show.setObjectName("tbr_show")
 
-    def get_data(self, data):
-        """
-        传入解析后的数据，每一行记录为[str, ...]，需要转化为向量[[0.1, 0.2...]...]
-        :param data: _Parse 解析后的数据，训练测试集数据
-        :return: 数值型数据
-        """
-        embedding_size = self.word2vec.embedding_size
-        xs = np.zeros([len(data), embedding_size])
-        data = ParseData(data)
+        layout = QtWidgets.QVBoxLayout(self)
 
-        if not self.load_model():
-            self.word2vec.fit(data)
-        for num, x in enumerate(data):
-            xx = []
-            for word in x:
-                xx.append(self.word2vec.predict(word))
-            xs[num] += np.array(xx).sum(axis=0)
-        return xs
+        _layout = QtWidgets.QHBoxLayout()
+        _layout.addSpacerItem(QtWidgets.QSpacerItem(0, 0, hPolicy=QtWidgets.QSizePolicy.MinimumExpanding))
+        lb_info = QtWidgets.QLabel("XSS注入检测")
+        lb_info.resize(400, 200)
+        lb_info.setFont(get_font(20))
+        _layout.addWidget(lb_info)
+        _layout.addSpacerItem(QtWidgets.QSpacerItem(0, 0, hPolicy=QtWidgets.QSizePolicy.MinimumExpanding))
+        layout.addLayout(_layout)
+
+        _layout = QtWidgets.QHBoxLayout()
+        _layout.addWidget(self.txt_input)
+        _layout.addWidget(self.btn_check)
+        layout.addLayout(_layout)
+
+        _layout = QtWidgets.QVBoxLayout(self)
+        _layout.addWidget(self.tbr_show)
+
+        layout.addLayout(_layout)
+        self.setLayout(layout)
+        self.translate()
+
+        QtCore.QMetaObject.connectSlotsByName(self)
+
+    def translate(self):
+        _translate = QtCore.QCoreApplication.translate
+        self.btn_check.setText(_translate("Form", "Check"))
 
 
-class Detect(Record):
+class Form(FormUI):
     def __init__(self):
-        super(Detect, self).__init__()
-        self.svc = SVC() if not os.path.exists("model/svc-rbf.m") else joblib.load("model/svc-rbf.m")
-        self.feature = joblib.load("cache/xss.feature")
+        super(Form, self).__init__()
+        from train import Detect
+        self.detect = Detect()
 
-    def fit(self, train):
-        train_x, train_y = train[:, 0], train[:, -1]
-        train_x = self.get_data(train_x)
-        train_y = train_y.astype("float")
-        self.svc.fit(train_x, train_y)
-        joblib.dump(self.svc, "model/svc-rbf.m")
-
-    def predict(self, param):
-        if isinstance(param, str):
-            param = np.array([param])
-        param = param.ravel()
-        x = self.get_data(param)
-        y = self.svc.predict(x)
-        return y
-
-
-def train_predict(detect):
-    xss_data = XssData()
-    train, test = xss_data.train, xss_data.test
-    detect.fit(train)
-
-    test_x, test_y = test[:, 0], test[:, 1]
-    test_y = test_y.astype("float")
-    pred_y = detect.predict(test_x)
-    print(classification_report(test_y, pred_y))
-
-
-def test(detect):
-    import pandas as pd
-    # data = pd.read_csv("data/xssed.csv")
-    # data = data.head(5).values
-    data = "%3c/title%3e%3cscript%3ealert(%22xss%22)%3c/script%3e"
-    print(data)
-    y = detect.predict(data)
-    print(y)
+    @QtCore.pyqtSlot()
+    def on_btn_check_clicked(self):
+        data = self.txt_input.text()
+        r = self.detect.predict(data)
+        out = "识别语句为：{} \nthe checking result is {}".format(data, r)
+        writer = Printable(self.tbr_show.append)
+        print(out, file=writer)
+        self.txt_input.clear()
 
 
 if __name__ == '__main__':
-    detect = Detect()
-    train_predict(detect)
-    # test(detect)
+    import sys
+    app = QApplication(sys.argv)
+    form = Form()
+    form.show()
+    sys.exit(app.exec_())

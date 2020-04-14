@@ -4,11 +4,7 @@ import sys
 import numpy as np
 
 WORD2VEC = "cache/xss.word2vec"
-FILENAME = "cache/xss.feature"
-
-
-def func(x, feature):
-    return feature.get(x)
+FILENAME = "../cache/xss.feature"
 
 
 class Word:
@@ -34,8 +30,6 @@ class Vec:
         self.embedding = None
 
     def fit(self, word):
-        if self.load():
-            return self.model
         word = Word(word)
         self.model = Word2Vec(
             word,
